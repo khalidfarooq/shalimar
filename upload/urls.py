@@ -2,5 +2,6 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('', base,name="base"),
+    path('',home,name="home"),
+    path('upload',model_form_upload,name="upload"),
 ]
