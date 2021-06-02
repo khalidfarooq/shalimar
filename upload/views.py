@@ -5,6 +5,7 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 # from django_encrypt_file import EncryptionService, ValidationError
 from .util import *
+from .models import *
 
 # def encrypt_view(request):
 #    try:
@@ -21,12 +22,15 @@ from .util import *
 # Create your views here.
 
 def home(request):
+    print(type(Document.objects.order_by('id').first().document))
+    print(Document.objects.order_by('id').first().document)
     return render(request,'upload/base.html')
 
 
 def model_form_upload(request):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)        
+        Document.objects.order_by('id').first().document
         if form.is_valid():
             form.save()
             return redirect('home')
