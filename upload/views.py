@@ -22,15 +22,15 @@ from .models import *
 # Create your views here.
 
 def home(request):
-    print(type(Document.objects.order_by('id').first().document))
-    print(Document.objects.order_by('id').first().document)
+    # print(type(Document.objects.order_by('id').first().document))
+    # print(Document.objects.order_by('id').first().document)
     return render(request,'upload/base.html')
 
 
 def model_form_upload(request):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)        
-        Document.objects.order_by('id').first().document
+        # Document.objects.order_by('id').first().document
         if form.is_valid():
             form.save()
             return redirect('home')

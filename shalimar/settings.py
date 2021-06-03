@@ -36,11 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
-
-    'upload',
-
     'django.contrib.messages',
     'django.contrib.sites',
+    'upload',
 
     'allauth',
     'allauth.account',
@@ -67,7 +65,7 @@ ROOT_URLCONF = 'shalimar.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'upload/templates/upload')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,23 +84,19 @@ WSGI_APPLICATION = 'shalimar.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 DATABASES = {
     'default': {
-    'ENGINE': 'djongo',
-    'NAME': 'shalimar'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-    
 }
-
-ENCRYPT_KEY = b'iDJpljxUBBsacCZ50GpSBff6Xem0R-giqXXnBFGJ2Rs='
-
-
+# DATABASES = {
+#     'default': {
+#     'ENGINE': 'djongo',
+#     'NAME': 'shalimar'
+#     }
+    
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -141,13 +135,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-
+STATIC_ROOT = ''
+STATICFILES_DIRS = (os.path.join('static'),)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-SIGNING_BACKEND = 'django_cryptography.core.signing.TimestampSigner'
