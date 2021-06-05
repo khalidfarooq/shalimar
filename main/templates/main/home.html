@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+{%block content%}
+
+<h1>HOME</h1>
+<a href="{% url 'drive' %}"><button>Drive</button></a><br><br><hr></a>
+<br>
+{% if is_Auth %}
+<a href="/logout"><button>Logout</button></a>
+
+{% else %}
+
+
+<a href="/login"><button>Login</button></a>
+{% endif %}
+{% endblock %}
